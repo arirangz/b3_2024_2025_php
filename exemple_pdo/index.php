@@ -1,3 +1,10 @@
+<?php
+require_once "pdo.php";
+require_once "libs/user.php";
+
+$users = getUsers($pdo);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,9 +16,9 @@
 
 <body>
     <ul>
-        <li>User1</li>
-        <li>User2</li>
-        <li>User3</li>
+        <?php foreach ($users as $user): ?>
+            <li><?= $user["nickname"] ?></li>
+        <?php endforeach; ?>
     </ul>
 </body>
 
