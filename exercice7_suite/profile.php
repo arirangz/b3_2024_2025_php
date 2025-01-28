@@ -5,5 +5,6 @@ if (!isset($_SESSION["email"])) {
 }
 require_once "templates/header.php" ?>
 <h1>Profil</h1>
+<h2>Nickname: <?= $_SESSION["nickname"]; ?></h2>
 <h2>Email: <?= $_SESSION["email"]; ?></h2>
 <?php require_once "templates/footer.php" ?>

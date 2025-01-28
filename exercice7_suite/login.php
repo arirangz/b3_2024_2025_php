@@ -4,6 +4,7 @@ require_once "pdo.php";
 require_once "libs/user.php";
 session_start();
 $errorMessage = "";
+
 if (isset($_POST["email"]) && isset($_POST["password"])) {
 
     $validUser = getUserByEmail($pdo, $_POST["email"]);
@@ -12,7 +13,8 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
     if ($validUser && password_verify($_POST["password"], $validUser["password"])) {
         // stocker les infos dans la session
         session_regenerate_id(true);
-        $_SESSION["email"] = $_POST["email"];
+        $_SESSION["email"] = $validUser["email"];
+        $_SESSION["nickname"] = $validUser["nickname"];
         // rediriger vers son profil
         header("Location: profile.php");
     } else {

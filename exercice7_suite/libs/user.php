@@ -15,6 +15,12 @@ function createUser(PDO $pdo, string $nickname, string $email, string $password)
     if (empty($nickname)) {
         $errors["nickname"] = "Le nom d'utilisateur est requis";
     }
+    if (empty($email)) {
+        $errors["email"] = "L'email est requis";
+    }
+    if (empty($password)) {
+        $errors["password"] = "Le mot de passe est requis";
+    }
     if (count($errors)) {
         return $errors;
     }
