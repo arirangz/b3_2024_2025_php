@@ -12,6 +12,10 @@ class Employee extends Person
         parent::__construct($firstName, $lastName, $age);
     }
 
+    public function getFullName(): string
+    {
+        return parent::getFullName()." - ".$this->getPosition()." at ".$this->getCompany();
+    }
 
     /**
      * Get the value of company
