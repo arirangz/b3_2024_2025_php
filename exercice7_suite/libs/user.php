@@ -19,7 +19,7 @@ function createUser(PDO $pdo, string $nickname, string $email, string $password)
         return $errors;
     }
     $query = $pdo->prepare("INSERT INTO user (nickname, email, password)
-    VALUES (:email, :password)");
+    VALUES (:email, :password, :nickname)");
     $query->bindValue(':email', $email, PDO::PARAM_STR);
     $query->bindValue(':nickname', $nickname, PDO::PARAM_STR);
     $hash = password_hash($password, PASSWORD_DEFAULT);
